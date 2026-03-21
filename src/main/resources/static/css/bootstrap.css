@@ -1,0 +1,22 @@
+.card {
+    padding: 15px;
+    --bs-card-bg: #637ada;
+    --bs-card-color: #ffffff;
+    border-radius: 10px;
+    min-height: 200px;
+
+}
+.carousel-control-prev,
+.carousel-control-next {
+    width: auto;              /* 전체 영역 제거 */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    pointer-events: auto;     /* 아이콘만 클릭 가능 */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    pointer-events: none;     /* 바깥 영역 클릭 막기 */
+}

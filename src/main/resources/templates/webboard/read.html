@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+
+    <!--basic.html에 들어갈 위치-->
+    <th:block th:fragment="content" th:action="@{register}" method="post">
+
+            <!-- 공지사항 제목 -->
+            <section class="notice-title article-container">
+
+
+                <div class="banner-image" style="background-color: #333;">
+                </div>
+
+                <div class="table-wrapper">
+
+
+
+                    <h1>Read Page</h1>
+
+
+                        <div class="form-group text-start">
+                            <div class="article-title">[[${dto.title}]]</div>
+                            <div class="article-writer">[[${dto.writer}]]</div>
+                            <div class="article-meta">[[${#temporals.format(dto.regDate, 'yyyy.MM.dd mm.ss')}]]</div>
+                        </div>
+
+
+                        <div class="form-group text-start">
+                            <div class="article-content">
+                                <p th:text="${dto.content}" style="white-space: pre-line;"></p>
+                            </div>
+                        </div>
+
+
+                            <div class="formgroup d-flex">
+
+                                <div>
+                                    <a th:href="@{modify(wno=${dto.wno}, page=${pageRequestDTO.page},type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}"
+                                       class="btn btn-primary me-2">
+                                        Modify
+                                    </a>
+
+                                    <button type="button"
+                                            class="btn btn-danger"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal">
+                                        Delete
+                                    </button>
+                                </div>
+
+                                <a th:href="@{/webboard/list(page=${pageRequestDTO.page}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}"
+                                   type="submit" class="btn btn-secondary ms-auto">
+                                    List
+                                </a>
+
+
+                            </div>
+
+                </div>
+
+            </section>
+        <!--삭제 확인 모달-->
+        <div class="modal fade" id="deleteModal" tabindex="-1">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">삭제 확인</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body text-start">
+                        게시글을 삭제하시겠습니까?
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <!-- 확인 → 삭제 -->
+                        <form th:action="@{/webboard/remove}" method="post">
+
+                            <input type="hidden" name="wno" th:value="${dto.wno}">
+                            <input type="hidden" name="page" th:value="${pageRequestDTO.page}">
+
+                            <button type="submit" class="btn btn-danger">
+                                확인
+                            </button>
+
+                        </form>
+
+                        <!-- 취소 -->
+                        <button type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal">
+                            취소
+                        </button>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </th:block>
+</th:block>
+
+
+
+</html>

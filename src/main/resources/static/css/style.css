@@ -1,0 +1,184 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#ffffff;
+}
+
+
+
+/* header */
+
+header{
+    width:100%;
+    height:70px;
+    border-bottom:1px solid #e5e5e5;
+    display:flex;
+    justify-content:center;
+}
+
+.header-container{
+    width:1200px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#333;
+    font-size:15px;
+}
+
+nav a:hover{
+    color:#000;
+}
+
+.text-decoration-none{
+    color: #333333 !important;
+}
+
+
+.header-menu{
+    display: flex;      /* 가로 정렬 */
+    list-style: none;   /* 점 제거 */
+    gap: 20px;          /* 메뉴 간격 */
+    margin: 0;
+    padding: 0;
+}
+
+/* banner image */
+
+.slide-image {
+    height: 550px;           /* 원하는 높이 */
+    overflow: hidden;
+}
+
+.slide-image img {
+    height: 100%;
+    object-fit: cover;       /* 비율 유지하면서 꽉 채움 (핵심) */
+}
+
+.banner-image {
+    display: block;
+    margin: 0 auto;     /* 가운데 정렬 */
+    max-width: 1200px;    /* 부모 넘지 않게 */
+    height: auto;       /* 비율 유지 */
+}
+
+
+
+/* notice title */
+
+.notice-title{
+    width:100%;
+    text-align:center;
+
+}
+
+.notice-title h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.notice-title p{
+    color:#666;
+}
+
+.article-title{
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.article-content p{
+    padding-bottom: 30px;
+    margin-bottom: 100px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.article-writer {
+    font-size: 1em;
+    color: #333333;
+}
+
+.article-meta {
+    font-size: 0.9em;
+    color: #666666;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+}
+
+
+/* 푸터 */
+.site-footer{
+    background-color: #222;
+    color: white;
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+.footer-container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-container p{
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.table-wrapper{
+    padding: 0 180px;
+    min-height: 400px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.subtable-wrapper{
+    padding: 0 180px;
+    min-height: 200px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.pagination{
+    gap:0;
+}
+
+.btn-custom {
+    padding: 4px 20px !important;
+}
+
+.custom-hr {
+    margin-bottom: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+

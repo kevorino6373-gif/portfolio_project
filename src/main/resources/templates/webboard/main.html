@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+
+    <!--basic.html에 들어갈 위치-->
+    <th:block th:fragment="content">
+
+
+        <div class="row my-4"></div>
+
+        <section class="subtable-wrapper">
+            <strong class="article-title">
+                창작자를 위한 쉽고 빠른 정보 공유를 위한 의사소통 사이트,</strong>
+
+
+        </section>
+
+
+        <section class="slide-image table-wrapper">
+            <div id="carouselExampleAutoplaying" class="carousel slide slide-image" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="/img/b1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item"data-bs-interval="3000">
+                        <img src="/img/b2.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <img src="/img/b3.jpg" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+
+        <section>
+
+
+
+
+        </section>
+
+
+
+
+    </th:block>
+</th:block>
+
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+
+    <!--basic.html에 들어갈 위치-->
+    <th:block th:fragment="content">
+
+        <section class="banner-image" style="background-color: #333;">
+        </section>
+
+        <!-- 공지사항 제목 -->
+
+        <section class="notice-title table-wrapper">
+
+            <div>
+                <form class="form-inline" id="searchForm" method="get" th:action="@{/webboard/list}">
+                    <input type="hidden" name="page" th:value="1">
+
+                <div class="d-flex align-items-center">
+
+                    <!-- 왼쪽 커뮤니티 -->
+                    <h3 class="mb-0">Community</h3>
+
+                    <!-- 검색 오른쪽 묶음 -->
+                    <div class="d-flex ms-auto">
+
+                        <div class="input-group me-2" style="width: 150px;">
+                            <select class="form-select" name="type">
+                                <option value="" th:selected="${pageRequestDTO.type == 'tcw'}">전체</option>
+                                <option value="t" th:selected="${pageRequestDTO.type == 't'}">제목</option>
+                                <option value="c" th:selected="${pageRequestDTO.type == 'c'}">내용</option>
+                                <option value="w" th:selected="${pageRequestDTO.type == 'w'}">작성자</option>
+                                <option value="tc" th:selected="${pageRequestDTO.type == 'tc'}">제목+내용</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group" style="width: 300px;">
+                            <input type="text" class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}"
+                                   id="keyword" placeholder="검색어를 입력해주세요">
+                            <button class="btn btn-outline-secondary btn-search" type="button">검색</button>
+                        </div>
+
+                    </div>
+
+                </div>
+                </form>
+
+                <hr class="custom-hr">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Writer</th>
+                        <th scope="col">Regdate</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="dto : ${result.dtoList}">
+                        <th scope="row">
+                            [[${dto.wno}]]
+                        </th>
+                        <td>
+                            <a class="text-decoration-none" th:href="@{/webboard/read(wno=${dto.wno}, page=${result.page},
+                            type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">
+                                [[${dto.title}]]
+                            </a>
+                        </td>
+                        <td>[[${dto.writer}]]</td>
+                        <td>[[${#temporals.format(dto.regDate, 'yyyy-MM-dd')}]]</td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="text-end">
+                    <a th:href="@{/webboard/register}">
+                        <button type="button" class="btn btn-primary btn-sm rounded-pill btn-custom ">Register</button>
+                    </a>
+                </div>
+
+
+
+                <!--페이징-->
+                <nav aria-label="Page navigation example mb-3">
+                    <ul class="pagination justify-content-center">
+                        <!--이전 -->
+                        <li class="page-item" th:if="${result.prev}">
+                            <a class="page-link" th:href="@{/webboard/list(page=${result.start -1},
+                            type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">
+                                &lt;
+                            </a>
+                        </li>
+
+                        <li th:class=" 'page-item ' + ${result.page == page?'active':''}"
+                            th:each="page : ${result.pageList}">
+                            <a class="page-link" th:href="@{/webboard/list(page=${page},
+                            type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">
+                                [[${page}]]
+                            </a>
+                        </li>
+
+                        <li class="page-item" th:if="${result.next}">
+                            <a class="page-link" th:href="@{/webboard/list(page=${result.end+1},
+                            type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">
+                                &gt;
+                            </a>
+
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+        </section>
+
+
+
+        <section class="notice-title">
+
+            <div class="table-wrapper ">
+
+                <h1 class="text-start">Contact us</h1>
+
+                <div class="row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="card">
+                            <div class="card-body text-start">
+
+                                <!-- 제목 + 아이콘 한 줄 -->
+                                <div class="d-flex align-items-center">
+                                    <strong class="card-title">
+                                        파트너쉽 제안
+                                    </strong>
+
+                                    <a href="#" class="ms-auto">
+                                        <i class="fa-solid fa-arrow-right-to-bracket fa-2xl"
+                                        style="margin-bottom: 40px"></i>
+                                    </a>
+                                </div>
+
+                                <p class="card-text">
+                                   aaa@bbbccc.com
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="card">
+                            <div class="card-body text-start">
+
+                                <!-- 제목 + 아이콘 한 줄 -->
+                                <div class="d-flex align-items-center">
+                                    <strong class="card-title">
+                                        X(Twitter)
+                                    </strong>
+
+                                    <a href="https://x.com/anythingb030" target="_blank" class="ms-auto">
+                                        <i class="fa-solid fa-arrow-right-to-bracket fa-2xl"
+                                           style="margin-bottom: 40px"></i>
+                                    </a>
+                                </div>
+
+                                <p class="card-text">
+                                    https://x.com/anythingB
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script th:inline="javascript">
+
+            var msg = [[${msg}]];
+            console.log(msg);
+
+            if(msg){
+                $(".modal").modal("show");
+            }
+
+            var searchForm = $("#searchForm");
+            $(".btn-search").click(function(){
+                searchForm.submit();
+            });
+
+        </script>
+
+
+
+
+
+    </th:block>
+</th:block>
+
+
+</html>

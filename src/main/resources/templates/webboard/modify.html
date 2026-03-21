@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<<th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+
+    <th:block th:fragment="content">
+
+        <form id="frm" th:action="@{modify}" method="post">
+            <input type="hidden" name="wno" th:value="${dto.wno}">
+            <input type="hidden" name="page" th:value="${requestDTO.page}">
+            <input type="hidden" name="type" th:value="${requestDTO.type}">
+            <input type="hidden" name="keyword" th:value="${requestDTO.keyword}">
+
+<!-- 공지사항 제목 -->
+        <section class="notice-title">
+
+
+            <div class="table-wrapper">
+
+                <h1>Modify Page</h1>
+
+
+
+                    <!--제목수정가능-->
+                    <div class="form-group text-start">
+                        <input type="text" class="mb-3 form-control article-contnet" name="title" id="title"
+                               th:value="${dto.title}">
+                    </div>
+                    <hr>
+
+                    <!--내용수정가능-->
+                    <div class="form-group text-start">
+                        <textarea type="text" class="mb-3 form-control" name="content" rows="15"
+                                  th:text="${dto.content}">
+                        </textarea>
+                    </div>
+
+<!--                    <div class="form-group text-start">-->
+<!--                        <label class="mb-2"> Writer </label>-->
+<!--                        <input type="text" class="mb-3 form-control" name="writer" th:value="${dto.writer}" disabled>-->
+<!--                    </div>-->
+
+<!--                    <div class="formgroup text-start">-->
+<!--                        <label class="mb-2"> RegDate </label>-->
+<!--                        <input type="text" class="mb-3 form-control"-->
+<!--                               th:value="${#temporals.format(dto.regDate, 'yyyy-MM-dd')}" disabled>-->
+<!--                    </div>-->
+
+
+                <div class="form-group text-start">
+                    <button type="button" class="btn btn-primary modifyBtn">Modify</button>
+                </div>
+
+
+
+            </div>
+
+        </section>
+
+        </form>
+
+        <script th:inline="javascript">
+
+            let actionForm = $('#frm');
+
+            $('.modifyBtn').on('click', function () {
+
+                actionForm.attr("action", "/webboard/modify");
+                actionForm.attr("method", "post");
+                if(!confirm("수정하시겠습니까?")){
+                    return;
+                }
+
+                actionForm.submit();
+            });
+
+
+        </script>
+
+    </th:block>
+</th:block>
+
+</html>
