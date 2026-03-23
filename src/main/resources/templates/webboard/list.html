@@ -47,7 +47,7 @@
                 </form>
 
                 <hr class="custom-hr">
-                <table class="table table-hover">
+                <table class="table table-hover board-table">
                     <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -62,17 +62,16 @@
                             [[${dto.wno}]]
                         </th>
                         <td>
-                            <a class="text-decoration-none" th:href="@{/webboard/read(wno=${dto.wno}, page=${result.page},
-                            type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">
+                            <a class="text-decoration-none"
+                               th:href="@{/webboard/read(wno=${dto.wno}, page=${result.page},
+               type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">
                                 [[${dto.title}]]
                             </a>
                         </td>
                         <td>[[${dto.writer}]]</td>
                         <td>[[${#temporals.format(dto.regDate, 'yyyy-MM-dd')}]]</td>
                     </tr>
-
                     </tbody>
-
                 </table>
 
                 <div class="text-end">
